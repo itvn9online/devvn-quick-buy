@@ -1,6 +1,6 @@
 <?php
-defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
-if(!class_exists('quickbuy_auto_update')) {
+defined('ABSPATH') or die('No script kiddies please!');
+if (!class_exists('quickbuy_auto_update')) {
     class quickbuy_auto_update
     {
         /**
@@ -40,7 +40,7 @@ if(!class_exists('quickbuy_auto_update')) {
             $this->update_path = $update_path;
             $this->plugin_slug = $plugin_slug;
 
-            list ($t1, $t2) = explode('/', $plugin_slug);
+            list($t1, $t2) = explode('/', $plugin_slug);
             $this->slug = str_replace('.php', '', $t2);
 
             // define the alternative API for updating checking
@@ -88,7 +88,8 @@ if(!class_exists('quickbuy_auto_update')) {
          */
         public function check_info($false, $action, $arg)
         {
-            if( $action !== 'plugin_information' ) return false;
+            if ($action !== 'plugin_information')
+                return false;
             if ($arg->slug == $this->slug) {
                 $information = $this->getRemote_information();
                 return $information;
@@ -115,7 +116,7 @@ if(!class_exists('quickbuy_auto_update')) {
          */
         public function getRemote_information()
         {
-            $request = wp_remote_post($this->update_path, array('body' => array('getremote' => 'info', 'slug'   =>  $this->slug)));
+            $request = wp_remote_post($this->update_path, array('body' => array('getremote' => 'info', 'slug' => $this->slug)));
             if (!is_wp_error($request) || wp_remote_retrieve_response_code($request) === 200) {
                 return unserialize($request['body']);
             }
@@ -136,14 +137,15 @@ if(!class_exists('quickbuy_auto_update')) {
         }
     }
 
-    add_action('init', 'devvn_quickbuy_auto_update' );
+    add_action('init', 'devvn_quickbuy_auto_update');
     function devvn_quickbuy_auto_update()
     {
         global $quickbuy_settings;
         $license_key = isset($quickbuy_settings['license_key']) ? sanitize_text_field($quickbuy_settings['license_key']) : '';
         $devvn_plugin_current_version = DEVVN_QB_VERSION_NUM;
-        $devvn_plugin_remote_path = 'https://license.levantoan.com/wp-admin/admin-ajax.php?action=devvn_update&slug=devvn-quick-buy&getremote=update&license='.$license_key;
+        //$devvn_plugin_remote_path = 'https://license.levantoan.com/wp-admin/admin-ajax.php?action=devvn_update&slug=devvn-quick-buy&getremote=update&license=' . $license_key;
+        $devvn_plugin_remote_path = 'https://license.levantoan.com/wp-admin/admin-ajax.php?action=devvn_update&slug=devvn-quick-buy&getremote=update&license=' . $license_key;
         $devvn_plugin_slug = DEVVN_QB_BASENAME;
-        new quickbuy_auto_update ($devvn_plugin_current_version, $devvn_plugin_remote_path, $devvn_plugin_slug);
+        new quickbuy_auto_update($devvn_plugin_current_version, $devvn_plugin_remote_path, $devvn_plugin_slug);
     }
 }

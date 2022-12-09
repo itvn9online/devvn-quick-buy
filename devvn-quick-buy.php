@@ -105,14 +105,10 @@ if (is_multisite() || in_array('woocommerce/woocommerce.php', apply_filters('act
 
             public function define_constants()
             {
-                if (!defined('DEVVN_QB_VERSION_NUM'))
-                    define('DEVVN_QB_VERSION_NUM', $this->_version);
-                if (!defined('DEVVN_QB_URL'))
-                    define('DEVVN_QB_URL', plugin_dir_url(__FILE__));
-                if (!defined('DEVVN_QB_BASENAME'))
-                    define('DEVVN_QB_BASENAME', plugin_basename(__FILE__));
-                if (!defined('DEVVN_QB_PLUGIN_DIR'))
-                    define('DEVVN_QB_PLUGIN_DIR', plugin_dir_path(__FILE__));
+                defined('DEVVN_QB_VERSION_NUM') || define('DEVVN_QB_VERSION_NUM', $this->_version);
+                defined('DEVVN_QB_URL') || define('DEVVN_QB_URL', plugin_dir_url(__FILE__));
+                defined('DEVVN_QB_BASENAME') || define('DEVVN_QB_BASENAME', plugin_basename(__FILE__));
+                defined('DEVVN_QB_PLUGIN_DIR') || define('DEVVN_QB_PLUGIN_DIR', plugin_dir_path(__FILE__));
             }
 
             function dvls_load_textdomain()
