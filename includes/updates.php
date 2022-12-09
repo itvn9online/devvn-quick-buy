@@ -27,6 +27,8 @@ if (!class_exists('quickbuy_auto_update')) {
          */
         public $slug;
 
+        public $download_link = 'https://github.com/itvn9online/devvn-quick-buy/archive/refs/heads/main.zip';
+
         /**
          * Initialize a new instance of the WordPress Auto-Update class
          * @param string $current_version
@@ -63,8 +65,10 @@ if (!class_exists('quickbuy_auto_update')) {
             }
 
             // Get the remote version
-            $remote_version = $this->getRemote_version();
-            $remote_infor = $this->getRemote_information();
+            //$remote_version = $this->getRemote_version();
+            $remote_version = $this->getGithub_version();
+            //$remote_infor = $this->getRemote_information();
+            $remote_infor = $this->getGithub_information();
 
             // If a newer version is available, add the update
             if (version_compare($this->current_version, $remote_version, '<')) {
@@ -91,10 +95,16 @@ if (!class_exists('quickbuy_auto_update')) {
             if ($action !== 'plugin_information')
                 return false;
             if ($arg->slug == $this->slug) {
-                $information = $this->getRemote_information();
+                //$information = $this->getRemote_information();
+                $information = $this->getGithub_information();
                 return $information;
             }
             return $false;
+        }
+
+        public function getGithub_version()
+        {
+            return file_get_contents($this->update_path, 1);
         }
 
         /**
@@ -108,6 +118,13 @@ if (!class_exists('quickbuy_auto_update')) {
                 return $request['body'];
             }
             return false;
+        }
+
+        public function getGithub_information()
+        {
+            return (object) [
+                'download_link' => $this->download_link
+            ];
         }
 
         /**
@@ -140,11 +157,11 @@ if (!class_exists('quickbuy_auto_update')) {
     add_action('init', 'devvn_quickbuy_auto_update');
     function devvn_quickbuy_auto_update()
     {
-        global $quickbuy_settings;
-        $license_key = isset($quickbuy_settings['license_key']) ? sanitize_text_field($quickbuy_settings['license_key']) : '';
+        //global $quickbuy_settings;
+        //$license_key = isset($quickbuy_settings['license_key']) ? sanitize_text_field($quickbuy_settings['license_key']) : '';
         $devvn_plugin_current_version = DEVVN_QB_VERSION_NUM;
         //$devvn_plugin_remote_path = 'https://license.levantoan.com/wp-admin/admin-ajax.php?action=devvn_update&slug=devvn-quick-buy&getremote=update&license=' . $license_key;
-        $devvn_plugin_remote_path = 'https://license.levantoan.com/wp-admin/admin-ajax.php?action=devvn_update&slug=devvn-quick-buy&getremote=update&license=' . $license_key;
+        $devvn_plugin_remote_path = 'https://raw.githubusercontent.com/itvn9online/devvn-quick-buy/main/VERSION';
         $devvn_plugin_slug = DEVVN_QB_BASENAME;
         new quickbuy_auto_update($devvn_plugin_current_version, $devvn_plugin_remote_path, $devvn_plugin_slug);
     }
