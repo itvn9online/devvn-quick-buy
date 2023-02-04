@@ -4,8 +4,8 @@
  * Version: 2.2.0
  * Description: DevVN Quick Buy là plugin giúp khách hàng có thể mua nhanh sản phẩm ngay tại trang chi tiết dưới dạng popup
  * Author: Lê Văn Toản
- * Author URI: https://levantoan.com
- * Plugin URI: https://levantoan.com/san-pham/plugin-mua-hang-nhanh-cho-woocommerce-woocommerce-quick-buy/
+ * Author URI: https://github.com/itvn9online/devvn-quick-buy
+ * Plugin URI: https://github.com/itvn9online/devvn-quick-buy
  * Text Domain: devvn-quickbuy
  * Domain Path: /languages
  * WC requires at least: 3.5.4
@@ -99,8 +99,8 @@ if (is_multisite() || in_array('woocommerce/woocommerce.php', apply_filters('act
                 if (is_admin()) {
                 add_action('in_plugin_update_message-' . DEVVN_QB_BASENAME, array($this, 'devvn_modify_plugin_update_message'), 10, 2);
                 }
-                include_once('includes/updates.php');
                 */
+                include_once('includes/updates.php');
             }
 
             public function define_constants()
@@ -587,6 +587,12 @@ if (is_multisite() || in_array('woocommerce/woocommerce.php', apply_filters('act
 
             function devvn_settings_page()
             {
+                global $quickbuy_settings;
+                //print_r($quickbuy_settings);
+                //$quickbuy_settings = $this->get_dvlsoptions();
+                //print_r($quickbuy_settings);
+                //print_r(wp_parse_args(get_option($this->_optionName)));
+                //echo 'aaaaaaaa';
                 include __DIR__ . '/includes/devvn_settings_page.php';
             }
 

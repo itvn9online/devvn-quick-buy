@@ -1,6 +1,8 @@
 <?php
 
-global $quickbuy_settings;
+//global $quickbuy_settings;
+//print_r($quickbuy_settings);
+
 ?>
 <div class="wrap devvn_quickbuy">
     <h1>
@@ -99,7 +101,9 @@ global $quickbuy_settings;
                         </label>
                     </td>
                 </tr>
-                <?php if ($this->check_plugin_active()): ?>
+                <?php
+                if ($this->check_plugin_active()){
+                ?>
                 <tr>
                     <th scope="row"><label for="require_district">
                             <?php _e('Require District', 'devvn-quickbuy'); ?>
@@ -126,7 +130,9 @@ global $quickbuy_settings;
                         </label>
                     </td>
                 </tr>
-                <?php endif; ?>
+                <?php
+                }
+                ?>
                 <tr>
                     <th scope="row"><label for="require_address">
                             <?php _e('Require Address box', 'devvn-quickbuy'); ?>
@@ -219,7 +225,7 @@ global $quickbuy_settings;
                     <td>
                         <input type="text" id="button_text1"
                             value="<?php echo esc_attr($quickbuy_settings['button_text1']); ?>"
-                            name="quickbuy_settings[button_text1]">
+                            name="quickbuy_options[button_text1]">
                     </td>
                 </tr>
                 <tr>
@@ -229,7 +235,7 @@ global $quickbuy_settings;
                     <td>
                         <input type="text" id="button_text1"
                             value="<?php echo esc_attr($quickbuy_settings['button_text2']); ?>"
-                            name="quickbuy_settings[button_text2]">
+                            name="quickbuy_options[button_text2]">
                     </td>
                 </tr>
             </tbody>
@@ -265,7 +271,7 @@ global $quickbuy_settings;
                     <td>
                         <input type="text" id="popup_title"
                             value="<?php echo esc_attr($quickbuy_settings['popup_title']); ?>"
-                            name="quickbuy_settings[popup_title]' ?>" />
+                            name="quickbuy_options[popup_title]" />
                         <br><small>
                             <?php _e('%s to view product title', 'devvn-quickbuy'); ?>
                         </small>
@@ -278,7 +284,7 @@ global $quickbuy_settings;
                     <td>
                         <?php
                         $settings = array(
-                            'textarea_name' => 'quickbuy_settings[popup_mess]',
+                            'textarea_name' => 'quickbuy_options[popup_mess]',
                             'textarea_rows' => 5,
                         );
                         wp_editor($quickbuy_settings['popup_mess'], 'popup_mess', $settings); ?>
@@ -308,7 +314,7 @@ global $quickbuy_settings;
                     <td>
                         <?php
                         $settings = array(
-                            'textarea_name' => 'quickbuy_settings[popup_sucess]',
+                            'textarea_name' => 'quickbuy_options[popup_sucess]',
                             'textarea_rows' => 15,
                         );
                         wp_editor($quickbuy_settings['popup_sucess'], 'popup_sucess', $settings); ?>
@@ -321,7 +327,7 @@ global $quickbuy_settings;
                     <td>
                         <input type="text" id="popup_error"
                             value="<?php echo esc_attr($quickbuy_settings['popup_error']); ?>"
-                            name="quickbuy_settings[popup_error]">
+                            name="quickbuy_options[popup_error]">
                     </td>
                 </tr>
                 <tr>
@@ -331,7 +337,7 @@ global $quickbuy_settings;
                     <td>
                         <input type="text" id="out_of_stock_mess"
                             value="<?php echo esc_attr($quickbuy_settings['out_of_stock_mess']); ?>"
-                            name="quickbuy_settings[out_of_stock_mess]">
+                            name="quickbuy_options[out_of_stock_mess]">
                     </td>
                 </tr>
             </tbody>
@@ -348,7 +354,7 @@ global $quickbuy_settings;
                     <td>
                         <input type="text" id="license_key"
                             value="<?php echo esc_attr($quickbuy_settings['license_key']); ?>"
-                            name="quickbuy_settings[license_key]">
+                            name="quickbuy_options[license_key]">
                         <?php if (!$quickbuy_settings['license_key']): ?><br><small>
                             <?php echo sprintf(__('<strong>Gửi email + domain qua <a href="%s" target="_blank">facebook</a> để nhận license<strong>', 'devvn-quickbuy'), 'http://m.me/levantoan.wp'); ?>
                         </small>

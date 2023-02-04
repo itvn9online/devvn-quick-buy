@@ -23,6 +23,8 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+# File backup
+*.zip
 
 # Windows shortcuts
 *.lnk

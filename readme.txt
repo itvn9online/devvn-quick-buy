@@ -18,7 +18,7 @@ Thêm vào functions.php
     remove_action('woocommerce_single_product_summary', array($devvn_quickbuy, 'add_button_quick_buy'), 35);
 ?>
 
-Thông tin thêm [về plugin này](https://levantoan.com/san-pham/plugin-mua-hang-nhanh-cho-woocommerce-woocommerce-quick-buy/).
+Thông tin thêm [về plugin này]( https://github.com/itvn9online/devvn-quick-buy ).
 
 = 2.1.5 - 23.11.2019 =
 
