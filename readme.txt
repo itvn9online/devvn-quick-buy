@@ -1,4 +1,19 @@
-﻿== Những cập nhật ==
+﻿=== EB Quick Buy ===
+Plugin Name: EB Quick Buy
+Plugin URI: https://www.facebook.com/groups/wordpresseb
+Plugin Facebook page: https://www.facebook.com/webgiare.org
+Author: Dao Quoc Dai
+Author URI: https://www.facebook.com/ech.bay
+Text Domain: echbayefm
+Tags: woocommerce 
+Requires at least: 4.8
+Tested up to: 6.2
+Stable tag: 1.2.6
+Version: 1.2.6
+Contributors: itvn9online
+Donate link: https://paypal.me/itvn9online/5
+
+== Những cập nhật ==
 
 /*
 * Di chuyển button mặc định vào sau nút "Thêm vào giỏ hàng" trong chi tiết sản phẩm
@@ -121,5 +136,3 @@ Thông tin thêm [về plugin này]( https://github.com/itvn9online/devvn-quick-
 * Fix: Tỉnh thành mặc định
 
 = 1.1.2 - 27.02.2018 =
-
-* Update: Tương thích với plugin Woo vs GHTK - https://levantoan.com/san-pham/plugin-ket-noi-giao-hang-tiet-kiem-voi-woocommerce-ghtk-vs-woocommerce/

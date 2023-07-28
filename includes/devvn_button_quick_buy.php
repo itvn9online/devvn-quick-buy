@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') or die('No script kiddies please!');
 
 $atts = shortcode_atts(
     array(
@@ -29,24 +30,23 @@ if ($this_product) {
     if ((!is_admin() || (defined('DOING_AJAX') && DOING_AJAX)) && $this_product->is_in_stock()) {
         if (!$small_link) {
 ?>
-<a href="javascript:void(0);" class="devvn_buy_now devvn_buy_now_style"
-    data-id="<?php echo $this_product->get_id(); ?>">
-    <strong>
-        <?php echo ($button_text1) ? $button_text1 : $quickbuy_settings['button_text1']; ?>
-    </strong>
-    <span>
-        <?php echo ($button_text2) ? $button_text2 : $quickbuy_settings['button_text2']; ?>
-    </span>
-</a>
-<?php
+            <a href="javascript:void(0);" class="devvn_buy_now devvn_buy_now_style" data-id="<?php echo $this_product->get_id(); ?>">
+                <strong>
+                    <?php echo ($button_text1) ? $button_text1 : $quickbuy_settings['button_text1']; ?>
+                </strong>
+                <span>
+                    <?php echo ($button_text2) ? $button_text2 : $quickbuy_settings['button_text2']; ?>
+                </span>
+            </a>
+            <?php
             if ($view) {
                 $this->quick_buy_popup_content($atts, true);
             }
         } else {
-?>
-<a href="javascript:void(0);" class="devvn_buy_now devvn_buy_now_ajax" data-id="<?php echo $this_product->get_id(); ?>">
-    <?php echo ($button_text1) ? $button_text1 : $quickbuy_settings['button_text1']; ?>
-</a>
+            ?>
+            <a href="javascript:void(0);" class="devvn_buy_now devvn_buy_now_ajax" data-id="<?php echo $this_product->get_id(); ?>">
+                <?php echo ($button_text1) ? $button_text1 : $quickbuy_settings['button_text1']; ?>
+            </a>
 <?php
         }
     }

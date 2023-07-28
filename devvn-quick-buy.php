@@ -1,9 +1,9 @@
 <?php
 /*
- * Plugin Name: DevVN - Quick Buy - Mua Hàng Nhanh
+ * Plugin Name: EB Quick Buy - Mua Hàng Nhanh
  * Version: 2.2.0
- * Description: DevVN Quick Buy là plugin giúp khách hàng có thể mua nhanh sản phẩm ngay tại trang chi tiết dưới dạng popup
- * Author: Lê Văn Toản
+ * Description: EB Quick Buy là plugin giúp khách hàng có thể mua nhanh sản phẩm ngay tại trang chi tiết dưới dạng popup
+ * Author: Dao Quoc Dai
  * Author URI: https://github.com/itvn9online/devvn-quick-buy
  * Plugin URI: https://github.com/itvn9online/devvn-quick-buy
  * Text Domain: devvn-quickbuy
@@ -91,7 +91,6 @@ if (is_multisite() || in_array('woocommerce/woocommerce.php', apply_filters('act
                     if ($quickbuy_settings['in_loop_prod']) {
                         add_action('woocommerce_after_shop_loop_item', array($this, 'add_quick_buy_to_loop_func'), 15);
                     }
-
                 }
 
                 /*
@@ -475,7 +474,6 @@ if (is_multisite() || in_array('woocommerce/woocommerce.php', apply_filters('act
                             $result['gotothankyou'] = true;
                             $result['thankyou_link'] = $results['redirect'];
                         }
-
                     } else {
                         $result['thankyou_link'] = $order->get_checkout_order_received_url();
                     }
@@ -551,7 +549,7 @@ if (is_multisite() || in_array('woocommerce/woocommerce.php', apply_filters('act
                     __('Quick Buy Setting', 'devvn-quickbuy'),
                     __('Quick Buy Setting', 'devvn-quickbuy'),
                     'manage_options',
-                    'quickkbuy-setting',
+                    'eoi-setting',
                     array(
                         $this,
                         'devvn_settings_page'
@@ -741,7 +739,6 @@ if (is_multisite() || in_array('woocommerce/woocommerce.php', apply_filters('act
                     $args['product_name'] = '';
                 return $args;
             }
-
         }
 
         $devvn_quickbuy = new DevVN_Quick_Buy();

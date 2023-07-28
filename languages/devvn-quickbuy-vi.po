@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: DevVN - Quick Buy - Mua Hàng Nhanh\n"
+"Project-Id-Version: EB Quick Buy - Mua Hàng Nhanh\n"
 "POT-Creation-Date: 2019-02-23 00:37+0700\n"
 "PO-Revision-Date: 2019-02-23 00:37+0700\n"
 "Last-Translator: \n"
@@ -328,34 +328,34 @@ msgstr ""
 "href=\"%s\" target=\"_blank\">facebook</a> cho tôi để nhận license</strong>"
 
 #. Plugin Name of the plugin/theme
-msgid "DevVN - Quick Buy - Mua Hàng Nhanh"
-msgstr "DevVN - Quick Buy - Mua Hàng Nhanh"
+msgid "EB Quick Buy - Mua Hàng Nhanh"
+msgstr "EB Quick Buy - Mua Hàng Nhanh"
 
 #. Plugin URI of the plugin/theme
 msgid ""
-"https://levantoan.com/san-pham/plugin-mua-hang-nhanh-cho-woocommerce-"
+"https://daoquocdai.com/san-pham/plugin-mua-hang-nhanh-cho-woocommerce-"
 "woocommerce-quick-buy/"
 msgstr ""
-"https://levantoan.com/san-pham/plugin-mua-hang-nhanh-cho-woocommerce-"
+"https://daoquocdai.com/san-pham/plugin-mua-hang-nhanh-cho-woocommerce-"
 "woocommerce-quick-buy/"
 
 #. Description of the plugin/theme
 msgid ""
-"DevVN Quick Buy là plugin giúp khách hàng có thể mua nhanh sản phẩm ngay tại "
+"EB Quick Buy là plugin giúp khách hàng có thể mua nhanh sản phẩm ngay tại "
 "trang chi tiết dưới dạng popup"
 msgstr ""
-"DevVN Quick Buy là plugin giúp khách hàng có thể mua nhanh sản phẩm ngay tại "
+"EB Quick Buy là plugin giúp khách hàng có thể mua nhanh sản phẩm ngay tại "
 "trang chi tiết dưới dạng popup"
 
 #. Author of the plugin/theme
 #, fuzzy
-#| msgid "Le Van Toan"
-msgid "Lê Văn Toản"
-msgstr "Lê Văn Toản"
+#| msgid "Dao Quoc Dai"
+msgid "Dao Quoc Dai"
+msgstr "Dao Quoc Dai"
 
 #. Author URI of the plugin/theme
-msgid "https://levantoan.com"
-msgstr "https://levantoan.com"
+msgid "https://daoquocdai.com"
+msgstr "https://daoquocdai.com"
 
 #~ msgid "Thông tin người mua"
 #~ msgstr "Thông tin người mua"
