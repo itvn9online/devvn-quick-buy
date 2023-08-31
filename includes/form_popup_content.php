@@ -239,7 +239,7 @@ if ($args) {
                                 <div class="popup_quickbuy_shipping_title">
                                     <?php _e('Total:', 'devvn-quickbuy'); ?>
                                 </div>
-                                <div class="popup_quickbuy_total_calc"></div>
+                                <div class="popup_quickbuy_total_calc">Liên hệ</div>
                             </div>
                         </div>
                         <div class="popup-customer-info-group popup-infor-submit">
