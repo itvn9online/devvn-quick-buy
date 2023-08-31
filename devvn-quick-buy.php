@@ -549,7 +549,7 @@ if (is_multisite() || in_array('woocommerce/woocommerce.php', apply_filters('act
                     __('Quick Buy Setting', 'devvn-quickbuy'),
                     __('Quick Buy Setting', 'devvn-quickbuy'),
                     'manage_options',
-                    'eoi-setting',
+                    'quickkbuy-setting',
                     array(
                         $this,
                         'devvn_settings_page'
