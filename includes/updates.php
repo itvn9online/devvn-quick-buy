@@ -161,7 +161,8 @@ if (!class_exists('quickbuy_auto_update')) {
         //$license_key = isset($quickbuy_settings['license_key']) ? sanitize_text_field($quickbuy_settings['license_key']) : '';
         $devvn_plugin_current_version = DEVVN_QB_VERSION_NUM;
         //$devvn_plugin_remote_path = 'https://license.daoquocdai.com/wp-admin/admin-ajax.php?action=devvn_update&slug=devvn-quick-buy&getremote=update&license=' . $license_key;
-        $devvn_plugin_remote_path = 'https://raw.githubusercontent.com/itvn9online/devvn-quick-buy/main/VERSION';
+        // $devvn_plugin_remote_path = 'https://raw.githubusercontent.com/itvn9online/devvn-quick-buy/main/VERSION';
+        $devvn_plugin_remote_path = 'https://raw.echbay.com/itvn9online/devvn-quick-buy/main/VERSION';
         $devvn_plugin_slug = DEVVN_QB_BASENAME;
         new quickbuy_auto_update($devvn_plugin_current_version, $devvn_plugin_remote_path, $devvn_plugin_slug);
     }
