@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: EB Quick Buy - Mua Hàng Nhanh
- * Version: 2.2.0
+ * Version: 2.2.2
  * Description: EB Quick Buy là plugin giúp khách hàng có thể mua nhanh sản phẩm ngay tại trang chi tiết dưới dạng popup
  * Author: Dao Quoc Dai
  * Author URI: https://github.com/itvn9online/devvn-quick-buy
@@ -17,7 +17,7 @@ if (is_multisite() || in_array('woocommerce/woocommerce.php', apply_filters('act
         class DevVN_Quick_Buy
         {
             protected static $instance;
-            public $_version = '2.2.0';
+            public $_version = '2.2.2';
             public $_optionName = 'quickbuy_options';
             public $_optionGroup = 'quickbuy-options-group';
             public $_defaultOptions = array(

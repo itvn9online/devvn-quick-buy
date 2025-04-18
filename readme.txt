@@ -7,7 +7,7 @@ Author URI: https://www.facebook.com/ech.bay
 Text Domain: echbayefm
 Tags: woocommerce 
 Requires at least: 4.8
-Tested up to: 6.6
+Tested up to: 6.7
 Stable tag: 2.2.2
 Version: 2.2.2
 Contributors: itvn9online
