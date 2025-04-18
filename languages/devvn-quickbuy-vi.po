@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: EB Quick Buy - Mua Hàng Nhanh\n"
+"Project-Id-Version: Echbay Quick Buy\n"
 "POT-Creation-Date: 2019-02-23 00:37+0700\n"
 "PO-Revision-Date: 2019-02-23 00:37+0700\n"
 "Last-Translator: \n"
@@ -328,8 +328,8 @@ msgstr ""
 "href=\"%s\" target=\"_blank\">facebook</a> cho tôi để nhận license</strong>"
 
 #. Plugin Name of the plugin/theme
-msgid "EB Quick Buy - Mua Hàng Nhanh"
-msgstr "EB Quick Buy - Mua Hàng Nhanh"
+msgid "Echbay Quick Buy"
+msgstr "Echbay Quick Buy"
 
 #. Plugin URI of the plugin/theme
 msgid ""
@@ -341,10 +341,10 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"EB Quick Buy là plugin giúp khách hàng có thể mua nhanh sản phẩm ngay tại "
+"Echbay Quick Buy là plugin giúp khách hàng có thể mua nhanh sản phẩm ngay tại "
 "trang chi tiết dưới dạng popup"
 msgstr ""
-"EB Quick Buy là plugin giúp khách hàng có thể mua nhanh sản phẩm ngay tại "
+"Echbay Quick Buy là plugin giúp khách hàng có thể mua nhanh sản phẩm ngay tại "
 "trang chi tiết dưới dạng popup"
 
 #. Author of the plugin/theme

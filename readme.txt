@@ -1,5 +1,5 @@
-﻿=== EB Quick Buy ===
-Plugin Name: EB Quick Buy
+﻿=== Echbay Quick Buy ===
+Plugin Name: Echbay Quick Buy
 Plugin URI: https://www.facebook.com/groups/wordpresseb
 Plugin Facebook page: https://www.facebook.com/webgiare.org
 Author: Dao Quoc Dai
