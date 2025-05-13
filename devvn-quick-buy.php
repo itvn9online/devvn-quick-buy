@@ -580,7 +580,7 @@ if (is_multisite() || in_array('woocommerce/woocommerce.php', apply_filters('act
                 if ($license_key && isset($plugin_data['package']) && $plugin_data['package'])
                     return;
                 $PluginURI = isset($plugin_data['PluginURI']) ? $plugin_data['PluginURI'] : '';
-                echo '<br />' . sprintf(__('<strong>Mua bản quyền để được tự động update. <a href="%s" target="_blank">Xem thêm thông tin mua bản quyền</a></strong> hoặc liên hệ mua trực tiếp qua <a href="%s" target="_blank">facebook</a>', 'devvn-quickbuy'), $PluginURI, 'http://m.me/levantoan.wp');
+                echo '<br />' . sprintf(__('<strong>Mua bản quyền để được tự động update. <a href="%s" target="_blank">Xem thêm thông tin mua bản quyền</a></strong> hoặc liên hệ mua trực tiếp qua <a href="%s" target="_blank">facebook</a>', 'devvn-quickbuy'), $PluginURI, 'https://webgiare.org');
             }
 
             function devvn_settings_page()

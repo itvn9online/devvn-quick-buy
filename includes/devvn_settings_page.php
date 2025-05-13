@@ -343,7 +343,7 @@ defined('ABSPATH') or die('No script kiddies please!');
                     <td>
                         <input type="text" id="license_key" value="<?php echo esc_attr($quickbuy_settings['license_key']); ?>" name="quickbuy_options[license_key]">
                         <?php if (!$quickbuy_settings['license_key']) : ?><br><small>
-                                <?php echo sprintf(__('<strong>Gửi email + domain qua <a href="%s" target="_blank">facebook</a> để nhận license<strong>', 'devvn-quickbuy'), 'http://m.me/levantoan.wp'); ?>
+                                <?php echo sprintf(__('<strong>Gửi email + domain qua <a href="%s" target="_blank">facebook</a> để nhận license<strong>', 'devvn-quickbuy'), 'https://webgiare.org'); ?>
                             </small>
                         <?php endif; ?>
                     </td>
