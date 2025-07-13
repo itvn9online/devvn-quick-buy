@@ -1,15 +1,16 @@
 <?php
 /*
  * Plugin Name: Echbay Quick Buy
- * Version: 2.2.2
- * Description: Echbay Quick Buy là plugin giúp khách hàng có thể mua nhanh sản phẩm ngay tại trang chi tiết dưới dạng popup
+ * Version: 2.2.3
+ * Description: Echbay Quick Buy là plugin giúp khách hàng có thể mua nhanh sản phẩm ngay tại trang chi tiết dưới dạng popup. Tương thích với WooCommerce HPOS.
  * Author: Dao Quoc Dai
  * Author URI: https://github.com/itvn9online/devvn-quick-buy
  * Plugin URI: https://github.com/itvn9online/devvn-quick-buy
  * Text Domain: devvn-quickbuy
  * Domain Path: /languages
  * WC requires at least: 3.5.4
- * WC tested up to: 3.8.1
+ * WC tested up to: 8.0.0
+ * Requires Plugins: woocommerce
  */
 defined('ABSPATH') or die('No script kiddies please!');
 // if (is_multisite() || in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
@@ -17,7 +18,7 @@ if (!class_exists('DevVN_Quick_Buy')) {
     class DevVN_Quick_Buy
     {
         protected static $instance;
-        public $_version = '2.2.2';
+        public $_version = '2.2.3';
         public $_optionName = 'quickbuy_options';
         public $_optionGroup = 'quickbuy-options-group';
         public $_defaultOptions = array(
@@ -63,6 +64,9 @@ if (!class_exists('DevVN_Quick_Buy')) {
             add_action('admin_init', array($this, 'dvls_register_mysettings'));
             add_action('plugins_loaded', array($this, 'dvls_load_textdomain'));
             add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
+
+            // Declare HPOS compatibility
+            add_action('before_woocommerce_init', array($this, 'declare_hpos_compatibility'));
 
             add_filter('woocommerce_quantity_input_args', array($this, 'devvn_woocommerce_quantity_input_args'));
 
@@ -394,6 +398,11 @@ if (!class_exists('DevVN_Quick_Buy')) {
                 $order->add_product($prod_check, $qty, $args);
                 $order->set_address($address, 'billing');
                 $order->set_address($address, 'shipping');
+
+                // Store gender meta data for HPOS compatibility
+                $gender_value = ($customer_gender == 'Anh') ? 'male' : 'female';
+                $order->update_meta_data('_billing_gender', $gender_value);
+
                 if ($customer_note) {
                     $order->set_customer_note($customer_note);
                 }
@@ -455,7 +464,8 @@ if (!class_exists('DevVN_Quick_Buy')) {
                 }
 
                 if (is_user_logged_in()) {
-                    update_post_meta($order->get_id(), '_customer_user', get_current_user_id());
+                    // Use HPOS compatible method
+                    $order->set_customer_id(get_current_user_id());
                 }
 
                 do_action('woocommerce_checkout_order_processed', $order->get_id(), array(), $order);
@@ -482,6 +492,37 @@ if (!class_exists('DevVN_Quick_Buy')) {
             }
             wp_send_json_error();
             die();
+        }
+
+        /**
+         * Declare HPOS compatibility
+         */
+        public function declare_hpos_compatibility()
+        {
+            if (class_exists('\Automattic\WooCommerce\Utilities\FeaturesUtil')) {
+                \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('custom_order_tables', __FILE__, true);
+            }
+        }
+
+        /**
+         * Check if HPOS is enabled
+         */
+        public function is_hpos_enabled()
+        {
+            if (class_exists('\Automattic\WooCommerce\Utilities\OrderUtil')) {
+                return \Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled();
+            }
+            return false;
+        }
+
+        /**
+         * Display admin notice about HPOS compatibility
+         */
+        public function hpos_compatibility_notice()
+        {
+            if ($this->is_hpos_enabled()) {
+                echo '<div class="notice notice-success"><p><strong>Echbay Quick Buy:</strong> Plugin đã tương thích với WooCommerce High-Performance Order Storage (HPOS).</p></div>';
+            }
         }
 
         public function check_woo_version($version = '3.0.0')
@@ -739,6 +780,32 @@ if (!class_exists('DevVN_Quick_Buy')) {
                 $args['product_name'] = '';
             return $args;
         }
+
+        /**
+         * Get order meta data compatible with HPOS
+         */
+        public function get_order_meta($order_id, $key, $single = true)
+        {
+            $order = wc_get_order($order_id);
+            if ($order) {
+                return $order->get_meta($key, $single);
+            }
+            return get_post_meta($order_id, $key, $single);
+        }
+
+        /**
+         * Update order meta data compatible with HPOS
+         */
+        public function update_order_meta($order_id, $key, $value)
+        {
+            $order = wc_get_order($order_id);
+            if ($order) {
+                $order->update_meta_data($key, $value);
+                $order->save();
+            } else {
+                update_post_meta($order_id, $key, $value);
+            }
+        }
     }
 
     $devvn_quickbuy = new DevVN_Quick_Buy();
@@ -764,7 +831,12 @@ if (!function_exists('devvn_woocommerce_order_formatted_billing_address_gender')
     add_filter('woocommerce_order_formatted_billing_address', 'devvn_woocommerce_order_formatted_billing_address_gender', 10, 2);
     function devvn_woocommerce_order_formatted_billing_address_gender($address_arg, $thisParent)
     {
-        $gender = get_post_meta($thisParent->get_id(), '_billing_gender', true);
+        // Use HPOS compatible method
+        $gender = $thisParent->get_meta('_billing_gender', true);
+        if (!$gender) {
+            $gender = get_post_meta($thisParent->get_id(), '_billing_gender', true);
+        }
+
         if (!isset($address_arg['gender']) && $gender) {
             $gender = ($gender == 'male') ? 'Anh' : 'Chị';
             $address_arg['gender'] = $gender;
@@ -790,7 +862,12 @@ if (!function_exists('devvn_custom_checkout_field_display_admin_order_meta_gende
     add_action('woocommerce_admin_order_data_after_billing_address', 'devvn_custom_checkout_field_display_admin_order_meta_gender', 10, 1);
     function devvn_custom_checkout_field_display_admin_order_meta_gender($order)
     {
-        $gender = get_post_meta($order->get_id(), '_billing_gender', true);
+        // Use HPOS compatible method
+        $gender = $order->get_meta('_billing_gender', true);
+        if (!$gender) {
+            $gender = get_post_meta($order->get_id(), '_billing_gender', true);
+        }
+
         if ($gender) {
             $gender = ($gender == 'male') ? 'Anh' : 'Chị';
 
