@@ -75,7 +75,7 @@ if (!class_exists('DevVN_Quick_Buy')) {
                 add_shortcode('devvn_quickbuy', array($this, 'devvn_button_quick_buy'));
                 add_shortcode('devvn_quickbuy_form', array($this, 'devvn_form_quick_buy'));
 
-                add_action('woocommerce_single_product_summary', array($this, 'add_button_quick_buy'), 35);
+                add_action('woocommerce_after_add_to_cart_button', array($this, 'add_button_quick_buy'), 5);
                 add_action('woocommerce_after_single_product', array($this, 'quick_buy_popup_content_single'));
 
                 add_action('wp_ajax_devvn_quickbuy', array($this, 'devvn_quickbuy_func'));
