@@ -331,25 +331,6 @@ defined('ABSPATH') or die('No script kiddies please!');
                 </tr>
             </tbody>
         </table>
-        <h2>
-            <?php _e('License', 'devvn-quickbuy'); ?>
-        </h2>
-        <table class="form-table">
-            <tbody>
-                <tr>
-                    <th scope="row"><label for="license_key">
-                            <?php _e('License key', 'devvn-quickbuy'); ?>
-                        </label></th>
-                    <td>
-                        <input type="text" id="license_key" value="<?php echo esc_attr($quickbuy_settings['license_key']); ?>" name="quickbuy_options[license_key]">
-                        <?php if (!$quickbuy_settings['license_key']) : ?><br><small>
-                                <?php echo sprintf(__('<strong>Gửi email + domain qua <a href="%s" target="_blank">facebook</a> để nhận license<strong>', 'devvn-quickbuy'), 'https://webgiare.org'); ?>
-                            </small>
-                        <?php endif; ?>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
         <?php do_settings_fields('quickbuy-options-group', 'default'); ?>
         <?php do_settings_sections('quickbuy-options-group', 'default'); ?>
         <?php submit_button(); ?>

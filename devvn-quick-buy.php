@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: Echbay Quick Buy
- * Version: 2.2.3
+ * Version: 2.2.4
  * Description: Echbay Quick Buy là plugin giúp khách hàng có thể mua nhanh sản phẩm ngay tại trang chi tiết dưới dạng popup. Tương thích với WooCommerce HPOS.
  * Author: Dao Quoc Dai
  * Author URI: https://github.com/itvn9online/devvn-quick-buy
@@ -18,7 +18,7 @@ if (!class_exists('DevVN_Quick_Buy')) {
     class DevVN_Quick_Buy
     {
         protected static $instance;
-        public $_version = '2.2.3';
+        public $_version = '2.2.4';
         public $_optionName = 'quickbuy_options';
         public $_optionGroup = 'quickbuy-options-group';
         public $_defaultOptions = array(
@@ -45,7 +45,6 @@ if (!class_exists('DevVN_Quick_Buy')) {
             'popup_sucess' => '<div class="popup-message success" style="color:#333;"><p class="clearfix" style="font-size:22px;color: #00c700;text-align:center">Đặt hàng thành công!</p><p class="clearfix" style="color: #00c700;padding: 10px 0;">Mã đơn hàng <span style="color: #333;font-weight: bold">#%%order_id%%</span></p><p class="clearfix">DevVN SHOP sẽ liên hệ với bạn trong 12h tới. Cám ơn bạn đã cho chúng tôi cơ hội được phục vụ.<br><strong>Hotline:</strong> 0936.xxx.xxx</p><div></div><div></div></div>',
             'popup_error' => 'Đặt hàng thất bại. Vui lòng đặt hàng lại. Xin cảm ơn!',
             'out_of_stock_mess' => 'Hết hàng!',
-            'license_key' => ''
         );
 
         public static function init()
@@ -97,12 +96,6 @@ if (!class_exists('DevVN_Quick_Buy')) {
                 }
             }
 
-            /*
-                add_action('admin_notices', array($this, 'admin_notices'));
-                if (is_admin()) {
-                add_action('in_plugin_update_message-' . DEVVN_QB_BASENAME, array($this, 'devvn_modify_plugin_update_message'), 10, 2);
-                }
-                */
             include_once('includes/updates.php');
         }
 
@@ -603,35 +596,14 @@ if (!class_exists('DevVN_Quick_Buy')) {
             register_setting($this->_optionGroup, $this->_optionName);
         }
 
-        function admin_notices()
-        {
-            global $quickbuy_settings;
-            $class = 'notice notice-error';
-            $license_key = $quickbuy_settings['license_key'];
-            var_dump($license_key);
-            if (!$license_key) {
-                printf('<div class="%1$s"><p><strong>Plugin Mua Hàng Nhanh:</strong> Hãy điền <strong>License Key</strong> để tự động cập nhật khi có phiên bản mới. <a href="%2$s">Thêm tại đây</a></p></div>', esc_attr($class), esc_url(admin_url('options-general.php?page=quickkbuy-setting')));
-            }
-        }
-
-        function devvn_modify_plugin_update_message($plugin_data, $response)
-        {
-            global $quickbuy_settings;
-            $license_key = sanitize_text_field($quickbuy_settings['license_key']);
-            if ($license_key && isset($plugin_data['package']) && $plugin_data['package'])
-                return;
-            $PluginURI = isset($plugin_data['PluginURI']) ? $plugin_data['PluginURI'] : '';
-            echo '<br />' . sprintf(__('<strong>Mua bản quyền để được tự động update. <a href="%s" target="_blank">Xem thêm thông tin mua bản quyền</a></strong> hoặc liên hệ mua trực tiếp qua <a href="%s" target="_blank">facebook</a>', 'devvn-quickbuy'), $PluginURI, 'https://webgiare.org');
-        }
-
         function devvn_settings_page()
         {
             global $quickbuy_settings;
-            //print_r($quickbuy_settings);
-            //$quickbuy_settings = $this->get_dvlsoptions();
-            //print_r($quickbuy_settings);
-            //print_r(wp_parse_args(get_option($this->_optionName)));
-            //echo 'aaaaaaaa';
+            // print_r($quickbuy_settings);
+            // $quickbuy_settings = $this->get_dvlsoptions();
+            // print_r($quickbuy_settings);
+            // print_r(wp_parse_args(get_option($this->_optionName)));
+            // echo 'aaaaaaaa';
             include __DIR__ . '/includes/devvn_settings_page.php';
         }
 

@@ -8,8 +8,8 @@ Text Domain: echbayefm
 Tags: woocommerce 
 Requires at least: 4.8
 Tested up to: 6.7
-Stable tag: 2.2.3
-Version: 2.2.3
+Stable tag: 2.2.4
+Version: 2.2.4
 Contributors: itvn9online
 Donate link: https://paypal.me/itvn9online/5
 
