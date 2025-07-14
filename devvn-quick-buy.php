@@ -96,7 +96,10 @@ if (!class_exists('DevVN_Quick_Buy')) {
                 }
             }
 
-            include_once('includes/updates.php');
+            // chỉ include update khi ở trang /plugins.php
+            if (isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], '/plugins.php') !== false) {
+                include_once('includes/updates.php');
+            }
         }
 
         public function define_constants()
