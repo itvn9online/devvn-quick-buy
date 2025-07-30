@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: Echbay Quick Buy
- * Version: 2.2.5
+ * Version: 2.2.6
  * Description: Echbay Quick Buy là plugin giúp khách hàng có thể mua nhanh sản phẩm ngay tại trang chi tiết dưới dạng popup. Tương thích với WooCommerce HPOS.
  * Author: Dao Quoc Dai
  * Author URI: https://github.com/itvn9online/devvn-quick-buy
@@ -18,7 +18,7 @@ if (!class_exists('DevVN_Quick_Buy')) {
     class DevVN_Quick_Buy
     {
         protected static $instance;
-        public $_version = '2.2.5';
+        public $_version = '2.2.6';
         public $_optionName = 'quickbuy_options';
         public $_optionGroup = 'quickbuy-options-group';
         public $_defaultOptions = array(
