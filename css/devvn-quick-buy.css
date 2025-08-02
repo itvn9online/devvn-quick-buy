@@ -478,7 +478,8 @@ a.devvn_buy_now_style {
     text-decoration: none;
     border-bottom: 0 !important;
     max-width: 350px;
-    width: 100%
+    width: 100%;
+    margin-bottom: 1em;
 }
 
 a.devvn_buy_now_style:hover,
